@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Debug</title>
+        <% include meta %>
+        <% include stylesheets %>
+    </head>
+    <style>
+     table th { color: #333 !important; font-weight: bold !important; }
+     table td { color: #777 !important}
+     table td, th, table { border-right: none !important; border-left: none !important; border-bottom: dotted 1px #ccc !important; border-top: none !important;  }
+     table td:nth-child(1) {
+      width: 40% !important;
+     }
+    table td, th {
+    padding: 10px 0 10px 0 !important;
+    }
+    table th {
+      font-size: 17px !important
+    }
+    </style>
+    <body class="page-body  ">
+        <div class="page-container horizontal-menu sidebar-collapsed">
+           <% include header %>
+           <% include debug_content %>
+           <% include footer %>
+           <% include scripts %>
+       </div>
+    </body>
+</html>
+

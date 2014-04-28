@@ -2,32 +2,39 @@ var db = require('../database');
 var models = require('../models');
 var controllers = {};
 
+function home(req, res, next) {
+  console.log(req.user)
+  var data = { title: 'home', user: req.user };
+  res.render('index', data);
+}
+
+function signup(req, res, next) {
+  var data = { title: 'Sign-up', user: req.user };
+  res.render('signup', data);
+}
+
+function signin(req, res, next) {
+  var data =  { user: req.user, title: 'Sign-in', user: req.user };
+  res.render('signin', data);
+}
+
+function signout(req, res, next) {
+  var data = { title: 'home', user: req.user };
+  res.render('index', data);
+}
+
+function resetpass(req, res, next) {
+  var data = { title: 'home', user: req.user};
+  res.render('index', data);
+}
+
+controllers.home = home;
+controllers.signup = signup;
+controllers.signin = signin;
+controllers.signout = signout;
+controllers.resetpass = resetpass;
 controllers.authmanager = require('./authmanager');
 controllers.usermanager = require('./usermanager');
 controllers.roommanager = require('./roommanager');
 controllers.middleware = require('./middleware');
-
-controllers.home =  function(req, res, next) {
-  var data = { title: 'home' };
-  res.render('index', data);
-};
-
-controllers.signup = function(req, res, next) {
-
-};
-
-controllers.signin = function(req, res, next) {
-
-};
-
-
-controllers.signout = function(req, res, next) {
-
-};
-
-
-controllers.resetpass = function(req, res, next) {
-
-};
-
 module.exports = controllers;

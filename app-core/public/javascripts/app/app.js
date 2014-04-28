@@ -7,7 +7,7 @@
 		var $this = $(this);
 		setTimeout(function() { removeTransition($this) }, 300);
 	});
-	$('.trans-700, .trans-400, .trans-600').each(function() {
+	$('.trans-700, .trans-400, .trans-600, .trans-2000').each(function() {
 		var $this = $(this);
 		setTimeout(function() { removeTransition($this) }, 500);
 	});

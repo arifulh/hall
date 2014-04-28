@@ -3,11 +3,15 @@ var path = require('path');
 var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var bodyParser = require('body-parser');
-
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var RedisStore = require('connect-redis')(session);
 var db = require('./database');
 var routes = require('./routes');
 var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -15,11 +19,27 @@ app.set('view engine', 'ejs');
 
 app.use(favicon());
 app.use(logger('dev'));
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(cookieParser());
+app.use(session({
+    secret: 'keyboard cat',
+    store : new RedisStore({
+        host : '127.0.0.1',
+        port : 6379
+    })
+ }));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(function (req, res, next) {
+    res.tojson = function (err, results) { res.json(err || results); };
+    next();
+});
+
 app.use('/', routes);
+
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

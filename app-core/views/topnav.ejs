@@ -1,27 +1,13 @@
 
 
 <div class="navbar-inner ">
-<ul class="navbar-nav pull-left">
-<li class="" >
-<a class="logo  " href=""><span class="bar1 "></span><h3 class="">trackfu</h3></a>
+<ul class="pull-left navbar-nav col-lg-6 col-md-3 col-sm-3">
+<li class="" style="border-right: none" >
+<a class="logo  " href="/"><span class="bar1 "></span><h3 class="">trackfu</h3></a>
 </li>
-
-<li class="">
-<a href="file:///Users/arifulhaque/dev/neon/html/neon/extra-login.html">
-    <i class="entypo-user right"></i> <span class="hidden-xs">Profile</span>
-</a>
-</li>
-
-<li class="">
-<a href="file:///Users/arifulhaque/dev/neon/html/neon/Channels">
-    <i class="entypo-star"></i> <span class="hidden-xs">Popular</span>
-</a>
-</li>
-
-<li>
-<a href="file:///Users/arifulhaque/dev/neon/html/neon/extra-login.html" >
-    <i class="entypo-plus-squared right"></i> <span  class="hidden-xs">Create</span>
-</a>
-</li>
+<% if (user) { %><li><a href="">Logged in as <strong><%= user.uname %></strong></a></li><% } %>
 </ul>
+
+
+
 </div>

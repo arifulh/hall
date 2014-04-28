@@ -1,14 +1,34 @@
 var redisClient = require('./redis-client');
 
+exports.getMulti = function() {
+    return redisClient.multi();
+}
+
+exports.addSetMember = function(key, member, callback) {
+    redisClient.sadd(key, member, callback);
+};
+
+exports.remSetMember = function(key, member, callback) {
+    redisClient.srem(key, member, callback);
+};
+
+exports.getSetMembers = function(key, callback) {
+    redisClient.smembers(key, callback);
+};
+
 exports.getField = function(key, field, callback) {
     redisClient.hget(key, field, callback);
+};
+
+exports.getFields = function(key, fields, callback) {
+    redisClient.hmget(key, fields, callback);
 };
 
 exports.setField = function(key, field, value, callback) {
     redisClient.hset(key, field, value, callback);
 };
 
-exports.getFields = function(key, callback) {
+exports.getAllFields = function(key, callback) {
     redisClient.hgetall(key, callback);
 };
 
@@ -18,11 +38,18 @@ exports.setFields = function(key, data, callback) {
     });
 };
 
-exports.getMultiFields = function(keys, callback) {
+exports.getMultiAllFields = function(keys, callback) {
     var multi = redisClient.multi();
     for(var x=0; x<keys.length; ++x) { multi.hgetall(keys[x]); }
     multi.exec(callback);
 };
+
+exports.getMultiFields = function(keys, fields, callback) {
+    var multi = redisClient.multi();
+    for(var x=0; x<keys.length; ++x) { multi.hmget(keys[x], fields); }
+    multi.exec(callback);
+};
+
 
 exports.getKeys = function(key, callback) {
     redisClient.hkeys(key, callback);

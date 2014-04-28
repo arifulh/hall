@@ -4,12 +4,14 @@ var controllers = require('../controllers');
 var usermanager = controllers.usermanager;
 
 module.exports = function(router) {
-    router.post('/users',              usermanager.createUser);
-    router.post('/users/:uid',         usermanager.getUserById);
-    router.get('/users/:uid/subs',     usermanager.getUserSubs);
-    router.get('/users/online',        usermanager.getOnlineUsers);
-    router.get('/users/:uid/alerts',   usermanager.getUserAlerts);
-    router.get('/users/search',        usermanager.searchUserName);
-    router.put('/users/:uid',          usermanager.updateUser);
+    router.get('/users/search',             usermanager.getUsersByName);
+    router.get('/users/online',             usermanager.getUsersByOnline);
+    router.get('/users',                    usermanager.getUsersByOnline);
+    router.post('/users',                   usermanager.createUser);
+    router.put('/users/:uid',               usermanager.updateUser);
+    router.get('/users/:uid',               usermanager.getUser);
+    router.get('/users/:uid/subs',          usermanager.getUserSubscriptions);
+    router.get('/users/:uid/notes',         usermanager.getUserNotifications);
     return router;
 }
+

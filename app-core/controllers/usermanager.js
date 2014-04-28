@@ -1,38 +1,47 @@
 var db = require('../database');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 var models = require('../models');
 var roommanager = require('./roommanager');
 var authmanager = require('./authmanager');
 var user = models.user;
 
-exports.createUser = function(req, res) {
-    user.create(req.params, function(err, results) {
-        res.json(results);
+function createUser(req, res) {
+    user.create(req.body, function(err, results) {
+        passport.authenticate('local', { failureRedirect: '/signup', failureFlash: false }, function(req, res) { res.redirect('/'); }(req, res));
     });
+
+}
+
+function updateUser(req, res) {
+
+}
+
+function getUser(req, res) {
+    user.getById(req.params, res.tojson);
+}
+
+function getUserSubscriptions(req, res) {
+    user.getSubsById(req.params, res.tojson);
+}
+
+function getUserNotifications(req, res) {
+    user.getNotesById(req.params, res.tojson);
+}
+
+function getUsersByOnline(req, res) {
+    user.findUsers(res.tojson);
 };
 
-exports.getUserById = function(req, res) {
+function getUsersByName(req, res) {
 
-};
+}
 
-exports.getUserSubs = function(req, res) {
-
-};
-
-exports.getUserAlerts = function(req, res) {
-
-};
-
-exports.getOnlineUsers = function(req, res) {
-
-};
-
-exports.searchUserName = function(req, res) {
-
-};
-
-exports.updateUser = function(req, res) {
-
-};
-
-
+exports.createUser = createUser;
+exports.updateUser = updateUser;
+exports.getUser = getUser;
+exports.getUserSubscriptions = getUserSubscriptions;
+exports.getUserNotifications = getUserNotifications;
+exports.getUsersByName = getUsersByName;
+exports.getUsersByOnline = getUsersByOnline;
 
