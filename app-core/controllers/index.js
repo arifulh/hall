@@ -1,9 +1,9 @@
+var passport = require('passport');
 var db = require('../database');
 var models = require('../models');
 var controllers = {};
 
 function home(req, res, next) {
-  console.log(req.user)
   var data = { title: 'home', user: req.user };
   res.render('index', data);
 }
@@ -19,8 +19,8 @@ function signin(req, res, next) {
 }
 
 function signout(req, res, next) {
-  var data = { title: 'home', user: req.user };
-  res.render('index', data);
+  req.logout();
+  res.redirect('/');
 }
 
 function resetpass(req, res, next) {

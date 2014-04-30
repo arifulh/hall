@@ -6,11 +6,13 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
 var RedisStore = require('connect-redis')(session);
 var db = require('./database');
-var routes = require('./routes');
 var app = express();
+
+var controllers = require('./controllers');
+
+controllers.authmanager(passport);
 
 
 // view engine setup
@@ -38,7 +40,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use('/', routes);
+app.use('/', require('./routes')(passport));
 
 
 /// catch 404 and forwarding to error handler

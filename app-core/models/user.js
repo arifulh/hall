@@ -10,39 +10,38 @@ var hashPassword = function(password, cb) {
     });
 };
 
-exports.create = function(params, cb) {
-    db.isField('email:uid', params.email, function(err, exists) {
-        if (exists) {  return cb(err, { success: false, msg: 'User already exists!' }) }
-
-        db.increment('global', 'nextUid', function(err, uid) {
-            hashPassword(params.password, function(err, hash) {
-                if(err) { return cb(err); }
-                params.password = hash;
-                params.uid = uid;
-
-                db.getMulti()
-                    .sadd('subs:'+uid, null)
-                    .sadd('notes:'+uid, null)
-                    .hset('uname:uid', params.uname, uid)
-                    .hset('email:uid', params.email, uid)
-                    .hmset('user:'+uid, params, function(err,res) { console.log(res) })
-                    .exec(function(err, replies) { cb(err, { success: true }); })
-            });
-
+exports.save = function(params, cb) {
+    db.increment('global', 'nextUid', function(err, uid) {
+        hashPassword(params.password, function(err, hash) {
+            if(err) { return cb(err); }
+            params.password = hash;
+            params.uid = uid;
+            params.id = uid;
+            db.getMulti()
+                .sadd('subs:'+uid, null)
+                .sadd('notes:'+uid, null)
+                .hset('uname:uid', params.uname, uid)
+                .hset('email:uid', params.email, uid)
+                .hset('email:uid', params.email, uid)
+                .hmset('user:'+uid, params)
+                .exec(function(err, replies) {
+                    delete params.password;
+                    cb(err, params);
+                })
         });
-    })
+    });
 };
 
 exports.getById = function(params, cb) {
     db.getFields('user:'+params.uid, ['uid', 'uname', 'email'], function(err, res) {
-        var user = { id: res[0], uid: res[0], uname: res[1] };
+        var user = { id: res[0], uid: res[0], uname: res[1], email: res[2] };
         cb(err, user);
     });
 };
 
 exports.findByEmail = function(params, cb) {
     db.getAllFields('email:uid', function(error,results) {
-        var email = _.find(Object.keys(results), function(e){ return e == params.email; });
+        var email = _.find(_.keys(results), function(e){ return e == params.email; });
 
         if (email) {
             var userKey = 'user:'+results[params.email];

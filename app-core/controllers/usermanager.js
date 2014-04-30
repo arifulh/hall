@@ -6,10 +6,9 @@ var roommanager = require('./roommanager');
 var authmanager = require('./authmanager');
 var user = models.user;
 
-function createUser(req, res) {
-    user.create(req.body, function(err, results) {
-        passport.authenticate('local', { failureRedirect: '/signup', failureFlash: false }, function(req, res) { res.redirect('/'); }(req, res));
-    });
+
+
+function createUser(req, res, next) {
 
 }
 
