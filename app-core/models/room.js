@@ -5,11 +5,11 @@ exports.save = function(params, cb) {
     db.increment('global', 'nextRid', function(err, rid) {
         params.rid = rid;
         multi
-            .sadd('rusers:'+rid, null)
+            .sadd('rusers:'+rid, params.owneruid)
             .sadd('rinvites:'+rid, null)
             .hset('rname:rid', params.rname, rid)
             .hmset('room:'+rid, params, function(err,res) { console.log(res) })
-            .exec(function(err, replies) { cb(err, replies); })
+            .exec(function(err, replies) { cb(err, params); })
     });
 };
 

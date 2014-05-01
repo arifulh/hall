@@ -10,6 +10,7 @@ module.exports = function(passport) {
 
   // site pages
   router.get('/',                       sitemanager.home);
+  router.get('/createroom',             sitemanager.createRoom);
 
   // account authentication
   router.get('/signup',                 accountmanager.signup);

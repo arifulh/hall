@@ -9,68 +9,92 @@
         <div class="page-container horizontal-menu sidebar-collapsed">
            <% include header %>
 
-           <div class="main-content row">
-            <div class="login-content col-lg-4">
-            <h3>Sign-up</h3><br>
-<!--
-            <div class="form-login-error">
-                <h3>Invalid login</h3>
-                <p>Enter <strong>demo</strong>/<strong>demo</strong> as login and password.</p>
-            </div>
- -->
-            <form method="post" action="/signup" role="form" id="form_login" novalidate="novalidate">
-                <div class="form-group">
+          <% include slideout %>
 
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="entypo-user"></i>
+
+    <div class="t2 t2-trans trans-700 main-content">
+                  <div class="login-content col-lg-4">
+                    <h3>
+                      <%= title %>
+                    </h3>
+                    <br>
+
+                    <form method="post" action="/signup" role="form" id="signup" novalidate="novalidate">
+                      <div class="form-group">
+
+
+
+
+
+                        <div class="tile-title tile-gray title-xl">
+                          <div class="tile-content">
+                            <div class="input-group">
+                              <div class="input-group-addon">
+                                <i class="entypo-user">
+                                </i>
+                              </div>
+                              <input type="text" class="form-control input-xl" name="uname" id="uname" placeholder="Username" autocomplete="off">
+                            </div>
+                          </div>
                         </div>
 
-                        <input type="text" class="form-control" name="uname" id="uname" placeholder="Username" autocomplete="off">
-                    </div>
+                        <div class="tile-title tile-gray title-xl">
 
-                </div>
-                <div class="form-group">
+                          <div class="tile-content">
+                            <div class="input-group">
+                              <div class="input-group-addon">
+                                <i class="entypo-mail">
+                                </i>
+                              </div>
+                              <input type="text" class="form-control input-xl" name="email" id="email" placeholder="Email" autocomplete="off">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tile-title tile-gray title-xl">
 
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="entypo-user"></i>
+                          <div class="tile-content ">
+                            <div class="input-group ">
+                              <div class="input-group-addon">
+                                <i class="entypo-key">
+                                </i>
+                              </div>
+                              <input type="password" class="form-control input-xl" name="password" id="password" placeholder="Password" autocomplete="off">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tile-title tile-gray title-xl">
+                          <div class="tile-content ">
+                            <div class="input-group-btn">
+                              <button type="submit" class="btn btn-block btn-xl">
+                                Sign-up
+                              </button>
+                            </div>
+                          </div>
                         </div>
 
-                        <input type="text" class="form-control" name="email" id="email" placeholder="Email" autocomplete="off">
-                    </div>
-
-                </div>
-
-                <div class="form-group">
-
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="entypo-key"></i>
-                        </div>
-
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Password" autocomplete="off">
-                    </div>
-
-                </div>
-
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block btn-login">
-                        <i class="entypo-login"></i>
-                        Sign up
-                    </button>
-                </div>
+                      </div>
 
 
 
 
-            </form>
 
 
 
+                    </form>
+
+
+
+
+                  </div>
 
         </div>
-           </div>
+
+
+
+
+
+
+
 
            <% include footer %>
            <% include scripts %>

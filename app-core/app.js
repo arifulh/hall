@@ -1,13 +1,22 @@
 var express = require('express');
 var path = require('path');
+var debug = require('debug')('my-application');
 var favicon = require('static-favicon');
 var logger = require('morgan');
+var csrf = require('csurf');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var RedisStore = require('connect-redis')(session);
 var passport = require('passport');
+var Primus = require('primus');
 var db = require('./database');
+
+var RedisSessionStore = new RedisStore({
+    host : '127.0.0.1',
+    port : 6379
+});
+
 var app = express();
 
 require('./passport-auth')(passport);
@@ -15,6 +24,7 @@ require('./passport-auth')(passport);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.set('port', process.env.PORT || 3000);
 
 app.use(favicon());
 app.use(logger('dev'));
@@ -23,10 +33,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(session({
     secret: 'keyboard cat',
-    store : new RedisStore({
-        host : '127.0.0.1',
-        port : 6379
-    })
+    store : RedisSessionStore
  }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -39,6 +46,7 @@ app.use(function (req, res, next) {
 
 // app routes
 app.use('/', require('./routes')(passport));
+
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
@@ -71,5 +79,19 @@ app.use(function(err, req, res, next) {
     });
 });
 
+var server = require('http').createServer(app);
+var primus = new Primus(server, {
+  transformer: 'websockets',
+  session: {
+    secret: 'keyboard cat',
+    store: RedisSessionStore
+  }
+});
 
-module.exports = app;
+
+require('./pubsub')(primus);
+
+
+server.listen(3000);
+
+

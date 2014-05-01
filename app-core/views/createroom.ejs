@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title><%= title %></title>
+        <% include meta %>
+        <% include stylesheets %>
+    </head>
+    <body class="page-body  ">
+        <div class="page-container horizontal-menu sidebar-collapsed">
+           <% include header %>
+
+          <% include slideout %>
+
+
+    <div class="t3 t3-trans trans-700 main-content">
+
+<div class="row">
+    <div class="login-content col-lg-8 col-md-7 col-sm-7">
+
+            <h3><%= title %></h3><br>
+<div class="tile-title tile-gray title-xl">
+      <div class="tile-content">
+      <form method="post" class="search-bar" action="/rooms">
+
+        <div class="input-group">
+          <input type="text" class="form-control input-xl" name="rname" placeholder="Enter a room name">
+
+          <div class="input-group-btn">
+            <button type="submit" class="btn btn-xl">
+              Create
+            </button>
+          </div>
+        </div>
+      </form>
+      </div>
+    </div>
+
+
+     </div>
+</div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+           <% include footer %>
+           <% include scripts %>
+       </div>
+    </body>
+</html>
+
