@@ -1,2 +1,2 @@
-exports.user = require('./user');
-exports.room = require('./room');
+exports.User = require('./user');
+exports.Room = require('./room');

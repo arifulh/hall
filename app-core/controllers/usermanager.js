@@ -1,46 +1,30 @@
-var db = require('../database');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var models = require('../models');
-var roommanager = require('./roommanager');
-var authmanager = require('./authmanager');
-var user = models.user;
+var User = require('../models').User;
 
-
-
-function createUser(req, res, next) {
+exports.createUser = function(req, res, next) {
 
 }
 
-function updateUser(req, res) {
+exports.updateUser = function(req, res, next) {
 
 }
 
-function getUser(req, res) {
-    user.getById(req.params, res.tojson);
+exports.getUser = function(req, res, next) {
+    User.getById(req.params, res.tojson);
 }
 
-function getUserSubscriptions(req, res) {
-    user.getSubsById(req.params, res.tojson);
+exports.getUserSubscriptions = function(req, res, next) {
+    User.getSubsById(req.params, res.tojson);
 }
 
-function getUserNotifications(req, res) {
-    user.getNotesById(req.params, res.tojson);
+exports.getUserNotifications = function(req, res, next) {
+    User.getNotesById(req.params, res.tojson);
 }
 
-function getUsersByOnline(req, res) {
-    user.findUsers(res.tojson);
+exports.getUsersByOnline = function(req, res, next) {
+    User.findUsers(res.tojson);
 };
 
-function getUsersByName(req, res) {
+exports.getUsersByName = function(req, res, next) {
 
 }
-
-exports.createUser = createUser;
-exports.updateUser = updateUser;
-exports.getUser = getUser;
-exports.getUserSubscriptions = getUserSubscriptions;
-exports.getUserNotifications = getUserNotifications;
-exports.getUsersByName = getUsersByName;
-exports.getUsersByOnline = getUsersByOnline;
 

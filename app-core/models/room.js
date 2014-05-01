@@ -1,6 +1,6 @@
 var db = require('../database');
 
-exports.create = function(params, cb) {
+exports.save = function(params, cb) {
     var multi = db.getMulti();
     db.increment('global', 'nextRid', function(err, rid) {
         params.rid = rid;

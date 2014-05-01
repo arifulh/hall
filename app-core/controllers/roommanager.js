@@ -1,42 +1,29 @@
-var db = require('../database');
-var models = require('../models');
-var roommanager = require('./roommanager');
-var authmanager = require('./authmanager');
-var room = models.room;
+var Room = require('../models').Room;
 
-function createRoom(req, res) {
-    room.create(req.params, res.tojson);
+exports.createRoom = function(req, res, next) {
+    Room.save(req.params, res.tojson);
 }
 
-function updateRoom(req, res) {
+exports.updateRoom = function(req, res, next) {
 
 }
 
-function getRoom(req, res) {
-    room.getById(req.params, res.tojson);
+exports.getRoom = function(req, res, next) {
+    Room.getById(req.params, res.tojson);
 }
 
-function getRoomUsers(req, res) {
-    room.getUsers(req.params, res.tojson);
+exports.getRoomUsers = function(req, res, next) {
+    Room.getUsers(req.params, res.tojson);
 }
 
-function getRoomInvitations(req, res) {
-    room.getInvitations(req.params, res.tojson);
+exports.getRoomInvitations = function(req, res, next) {
+    Room.getInvitations(req.params, res.tojson);
 }
 
-function getUsersOnline(req, res) {
-    room.getOnine(req.params, res.tojson);
+exports.getUsersOnline = function(req, res, next) {
+    Room.getOnine(req.params, res.tojson);
 }
 
-function getRoomsByName(req, res) {
+exports.getRoomsByName = function(req, res, next) {
 
 };
-
-exports.createRoom = createRoom;
-exports.updateRoom = updateRoom;
-exports.getRoom = getRoom;
-exports.getRoomUsers = getRoomUsers;
-exports.getRoomInvitations = getRoomInvitations;
-exports.getUsersOnline = getUsersOnline;
-exports.getRoomsByName = getRoomsByName;
-

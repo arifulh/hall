@@ -5,15 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var bodyParser = require('body-parser');
-var passport = require('passport');
 var RedisStore = require('connect-redis')(session);
+var passport = require('passport');
 var db = require('./database');
 var app = express();
 
-var controllers = require('./controllers');
-
-controllers.authmanager(passport);
-
+require('./passport-auth')(passport);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -40,8 +37,8 @@ app.use(function (req, res, next) {
     next();
 });
 
+// app routes
 app.use('/', require('./routes')(passport));
-
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
