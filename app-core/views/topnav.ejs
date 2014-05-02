@@ -2,10 +2,35 @@
 
 <div class="navbar-inner ">
 <ul class="pull-left navbar-nav col-lg-6 col-md-3 col-sm-3">
-<li class="" style="border-right: none" >
-<a class="logo  " href="/"><span class="bar1 "></span><h3 class="">trackfu</h3></a>
+<li class=""  >
+<a class="logo  button button-flat" href="/"><span class="bar1 "></span><h3 class="">trackfu</h3></a>
 </li>
-<% if (user) { %><li><a href="">Logged in as <strong><%= user.uname %></strong></a></li><% } %>
+<% if (user) { %>
+
+
+
+    <li class="user-dropdown"><span class="button-dropdown" data-buttons="dropdown">
+<a href="" class="no-ajaxy button button-flat">Logged in as <strong><%= user.uname %></strong> <i class="fa fa-caret-down"></i></a>
+    <ul>
+        <li class="">
+            <a href="/profile">Profile</a>
+        </li>
+        <li class="button-dropdown-divider">
+            <a class="no-ajaxy" href="/signout">Sign out</a>
+        </li>
+    </ul>
+</span></li>
+
+<% } %>
+
+
+
+
+
+
+
+
+
 </ul>
 
 

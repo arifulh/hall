@@ -11,6 +11,9 @@ module.exports = function(passport) {
   // site pages
   router.get('/',                       sitemanager.home);
   router.get('/createroom',             sitemanager.createRoom);
+  router.post('/createroom',            sitemanager.onCreate);
+  router.get('/room/:rid/:rname',       sitemanager.getRoom);
+
 
   // account authentication
   router.get('/signup',                 accountmanager.signup);
@@ -19,6 +22,7 @@ module.exports = function(passport) {
   router.get('/resetpass',              accountmanager.resetpass);
   router.post('/signup',                accountmanager.onsignup);
   router.post('/signin',                accountmanager.onsignin);
+  router.get('/profile',                accountmanager.profile);
 
   // user api routes
   router.get('/users/search',           usermanager.getUsersByName);

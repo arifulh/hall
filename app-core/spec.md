@@ -1,4 +1,3 @@
-- Create room
 - Setup pubsub
 
 - Invite another user to room

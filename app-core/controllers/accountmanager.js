@@ -20,9 +20,15 @@ exports.signout = function(req, res, next) {
 }
 
 exports.resetpass = function(req, res, next) {
-  var data = { title: 'home', user: req.user};
-  res.render('index', data);
+  var data = { title: 'Reset Password', user: req.user};
+  res.render('profile', data);
 }
+
+exports.profile = function(req, res, next) {
+  var data = { title: 'Profile', user: req.user };
+  res.render('profile', data);
+}
+
 
 exports.onsignup = passport.authenticate('local-signup', {
     successRedirect : '/', failureRedirect : '/signup', failureFlash : false });

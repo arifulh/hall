@@ -1,8 +1,11 @@
 var Room = require('../models').Room;
 
-exports.createRoom = function(req, res, next) {
+exports.createRoom = function(req, res, cb) {
     req.body.owneruid = req.user.uid;
-    Room.save(req.body, res.tojson);
+    Room.save(req.body, function(err, results) {
+        console.log(results);
+        cb(err, results)
+    });
 }
 
 exports.updateRoom = function(req, res, next) {

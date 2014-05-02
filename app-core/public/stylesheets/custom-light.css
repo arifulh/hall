@@ -7,8 +7,6 @@ body {
     background: url(/images/bg2.png) -280px -400px no-repeat !important;
     background-color: #cacaca !important;
     background-size: auto  !important;
-
-
 }
 body .page-container {
     box-shadow: none !important;
@@ -40,14 +38,14 @@ body .page-container.horizontal-menu header.navbar.navbar-fixed-top {
     min-width: 30%;
 }
 body .page-container.horizontal-menu header.navbar.navbar-fixed-top li {
-    border-right: solid 1px #fafafa;
+
     padding: 0 !important;
 
 
 }
 body .page-container.horizontal-menu header.navbar.navbar-fixed-top a {
-    padding: 0.8em 0.6em;
-    font-size: 1.4em;
+    padding: 0.3em 0.6em;
+    font-size: 1.3em;
     height: 41px;
     color: #000;
     border: none;
@@ -66,10 +64,7 @@ body .page-container.horizontal-menu header.navbar.navbar-fixed-top a span {
     position: relative;
 }
 
-body .page-container.horizontal-menu header.navbar.navbar-fixed-top a:hover {
-    background: #000 !important;
-    color: #ddd !important;
-}
+
 .boxed-layout .page-container.horizontal-menu>header.navbar {
     width: 100%;
 }
@@ -82,6 +77,22 @@ body .page-container.horizontal-menu header.navbar.navbar-fixed-top a:hover {
 .page-container.horizontal-menu header.navbar .navbar-nav {
 
 }
+.page-container.horizontal-menu header.navbar .navbar-nav > li ul li > a {
+    background: #fff !important;
+    border: none !important;
+    opacity: 1 !important;
+    color: #000 !important;
+    padding: 5px 12px !important;
+}
+.user-dropdown {
+    font-size: 0.8em;
+
+}
+.user-dropdown a {
+   padding: 0.5em 0.9em !important;
+
+}
+
 
 .right-panel {
     width: 360px; height: 100%; position: fixed; right: 0; z-index: 9999999; top: 0px;
@@ -93,7 +104,7 @@ body .page-container.horizontal-menu header.navbar.navbar-fixed-top a:hover {
 }
 
 .right-panel.light {
-    background:#ccc; display: block; opacity:0.7;
+    background:#ccc; display: block; opacity:0.9;
 }
 
 .slide-modal {
@@ -102,7 +113,7 @@ body .page-container.horizontal-menu header.navbar.navbar-fixed-top a:hover {
 .input-xl {
     background: #f9f9f9;
     border: none;
-    height: 50px;
+    height: 53px;
     font-size: 16px;
     color: #444;
         transition: all 0.25s ease;
@@ -110,12 +121,10 @@ body .page-container.horizontal-menu header.navbar.navbar-fixed-top a:hover {
 }
 .btn-xl {
     background: #e5e5e5;
-    height: 50px;
-    font-size: 16px;
     color: #888;
     min-width: 100px;
     transition: all 0.3s ease;
-
+    margin: -6px 2px 0 0 !important;
 }
 .input-xl:focus {
         border-bottom: none;
@@ -134,16 +143,20 @@ body .page-container.horizontal-menu header.navbar.navbar-fixed-top a:hover {
 
 }
 .logo h3 {
-    color: #111f2e !important;
+    color: #222 !important;
     font-family: 'Helvetica Neue';
-    padding: 0;
     margin: 0;
     font-size: 1em;
     display: inline-block;
-    background: #eee;
     padding: 12px 15px;
 }
-
+.input-group-addon {
+    background: #f9f9f9
+}
+.player {
+    background: #fff !important;
+    opacity: 0.8 !important;
+}
 .bar1  {
     display: inline-block;
     width: 7px;
@@ -153,7 +166,7 @@ body .page-container.horizontal-menu header.navbar.navbar-fixed-top a:hover {
     float: left;
     z-index: 999;
     position: relative;
-    background: #fff
+    background: #fff;
 }
 .t1.t1-trans {
     -webkit-transform: translate(0,-42px) !important;
