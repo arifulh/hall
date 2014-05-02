@@ -6,7 +6,10 @@
 			network: true
 		});
 		primus.on('open', function () {
-			primus.write({ action: 'join', room: 'news' });
+            primus.write({ channel: 'test', message: 'news' });
+            primus.on('data', function(message){
+                console.log(message)
+            })
 		});
 	}
 

@@ -1,99 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title><%= title %></title>
-        <% include meta %>
-        <% include stylesheets %>
-    </head>
-    <body class="page-body  ">
-        <div class="page-container horizontal-menu sidebar-collapsed">
-           <% include header %>
-
-          <% include slideout %>
-
-
-    <div class="t3 t3-trans trans-700 main-content">
-
-            <div class="login-content col-lg-4">
-            <h3><%= title %></h3><br>
-
-
-
-                  <form method="post" action="/signin" role="form" id="signin" novalidate="novalidate">
-                      <div class="form-group">
-
-
-
-
-
-                        <div class="tile-title tile-gray title-xl">
-                          <div class="tile-content">
-                            <div class="input-group">
-                              <div class="input-group-addon">
-                                <i class="entypo-user">
-                                </i>
-                              </div>
-                              <input type="text" class="form-control input-xl" name="email" id="email" placeholder="Email" autocomplete="off">
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="tile-title tile-gray title-xl">
-
-                          <div class="tile-content ">
-                            <div class="input-group ">
-                              <div class="input-group-addon">
-                                <i class="entypo-key">
-                                </i>
-                              </div>
-                              <input type="password" class="form-control input-xl" name="password" id="password" placeholder="Password" autocomplete="off">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="tile-title tile-gray title-xl">
-                          <div class="tile-content ">
-                            <div class="input-group-btn">
-                              <button type="submit" class=" btn-block button-large button button-3d ">
-                                Sign-in
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                        <hr>
-
-                      </div>
-
-
-
-
-
-
-
-                    </form>
-
-
-
-
-
-            <div class="login-bottom-links">
-
-
-                <a class="pull-left" href="http://demo.neontheme.com/extra/forgot-password/" class="link">Forgot your password?</a>
-
+  <head>
+    <title><%= title %></title>
+    <% include meta %>
+    <% include stylesheets %>
+  </head>
+  <body class="page-body  ">
+    <div class="page-container horizontal-menu sidebar-collapsed">
+      <% include header %>
+      <% include slideout %>
+      <div class="t3 t3-trans trans-700 main-content">
+        <div class="login-content col-lg-4">
+          <h3><%= title %></h3><br>
+          <form method="post" action="/signin" role="form" id="signin" novalidate="novalidate">
+            <div class="form-group">
+              <div class="tile-title tile-gray title-xl">
+                <div class="tile-content">
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="entypo-user">
+                      </i>
+                    </div>
+                    <input type="text" class="form-control input-xl" name="uemail" id="email" placeholder="Email" autocomplete="off">
+                  </div>
+                </div>
+              </div>
+              <div class="tile-title tile-gray title-xl">
+                <div class="tile-content ">
+                  <div class="input-group ">
+                    <div class="input-group-addon">
+                      <i class="entypo-key">
+                      </i>
+                    </div>
+                    <input type="password" class="form-control input-xl" name="password" id="password" placeholder="Password" autocomplete="off">
+                  </div>
+                </div>
+              </div>
+              <div class="tile-title tile-gray title-xl">
+                <div class="tile-content ">
+                  <div class="input-group-btn">
+                    <button type="submit" class=" btn-block button-large button button-3d ">
+                    Sign-in
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <hr>
             </div>
-
+          </form>
+          <div class="login-bottom-links">
+            <a class="pull-left" href="http://demo.neontheme.com/extra/forgot-password/" class="link">Forgot your password?</a>
+          </div>
         </div>
-  </div>
-
-
-
-
-
-
-
-           <% include footer %>
-           <% include scripts %>
-       </div>
-    </body>
+      </div>
+    </div>
+    <% include footer %>
+    <% include scripts %>
+  </body>
 </html>
-

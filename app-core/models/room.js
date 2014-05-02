@@ -5,6 +5,7 @@ exports.save = function(params, cb) {
     db.increment('global', 'nextRid', function(err, rid) {
         params.rid = rid;
         multi
+            .sadd('usubs:'+params.owneruid, rid)
             .sadd('rusers:'+rid, params.owneruid)
             .sadd('rinvites:'+rid, null)
             .hset('rname:rid', params.rname, rid)

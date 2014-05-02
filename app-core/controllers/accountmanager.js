@@ -3,12 +3,12 @@ var db = require('../database');
 var models = require('../models');
 
 exports.signup = function(req, res, next) {
-  var data = { title: 'Sign-up', user: req.user };
+  var data = { title: 'Register', user: req.user };
   res.render('signup', data);
 }
 
 exports.signin = function(req, res, next) {
-  var data =  { user: req.user, title: 'Sign-in', user: req.user };
+  var data =  { user: req.user, title: 'Login', user: req.user };
   res.render('signin', data);
 }
 

@@ -32,11 +32,11 @@ body .page-container.horizontal-menu header.navbar.navbar-fixed-top {
 
 }
 
-
- .navbar-nav.pull-left  {
-    border-bottom: solid 1px #fff !important;
-    min-width: 30%;
+.main-content {
+    padding: 0 15px !important;
+    margin: 0 !important
 }
+
 body .page-container.horizontal-menu header.navbar.navbar-fixed-top li {
 
     padding: 0 !important;
@@ -46,7 +46,7 @@ body .page-container.horizontal-menu header.navbar.navbar-fixed-top li {
 body .page-container.horizontal-menu header.navbar.navbar-fixed-top a {
     padding: 0.3em 0.6em;
     font-size: 1.3em;
-    height: 41px;
+    height: 42px;
     color: #000;
     border: none;
 
@@ -84,6 +84,16 @@ body .page-container.horizontal-menu header.navbar.navbar-fixed-top a span {
     color: #000 !important;
     padding: 5px 12px !important;
 }
+ .navbar-nav.pull-left:nth-child(2) a {
+   padding: 1.2em 1em !important;
+   margin: 0 !important;
+   color: #000 !important;
+ }
+ .navbar-nav.pull-left:nth-child(2) a:hover,
+  .navbar-nav.pull-left:nth-child(2) a.active {
+    background: #ddd !important;
+ }
+
 .user-dropdown {
     font-size: 0.8em;
 

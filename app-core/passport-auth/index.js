@@ -13,21 +13,21 @@ module.exports = function(passport) {
     });
 
     passport.use('local-signup', new LocalStrategy({
-        usernameField : 'email',
+        usernameField : 'uemail',
         passwordField : 'password',
         passReqToCallback : true
     },
-    function(req, email, password, done) {
-        User.findByEmail({ email :  email }, function(err, user) {
+    function(req, uemail, password, done) {
+        User.findByEmail({ uemail :  uemail }, function(err, user) {
             if (err) return done(err);
 
             if (user) {
-                return done(null, false, { message: 'That email is already taken.' });
+                return done(null, false, { message: 'That uemail is already taken.' });
             } else {
                 User.save({
                   uname: req.body.uname,
                   password: req.body.password,
-                  email: req.body.email
+                  uemail: req.body.uemail
                 }, function(err, newUser) {
                     if (err) return done(err);
                     return done(null, newUser);
@@ -39,12 +39,12 @@ module.exports = function(passport) {
 
 
     passport.use('local-signin', new LocalStrategy({
-        usernameField : 'email',
+        usernameField : 'uemail',
         passwordField : 'password',
         passReqToCallback : true
     },
-    function(req, email, password, done) {
-        User.findByEmail({ email:  email }, function(err, user) {
+    function(req, uemail, password, done) {
+        User.findByEmail({ uemail:  uemail }, function(err, user) {
             if (err) return done(err);
             if (!user) return done(null, false, { message: 'Incorrect email.' });
             bcrypt.compare(password, user.password, function(err, isValid) {

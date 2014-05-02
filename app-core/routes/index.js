@@ -10,9 +10,9 @@ module.exports = function(passport) {
 
   // site pages
   router.get('/',                       sitemanager.home);
-  router.get('/createroom',             sitemanager.createRoom);
-  router.post('/createroom',            sitemanager.onCreate);
-  router.get('/room/:rid/:rname',       sitemanager.getRoom);
+  router.get('/r/create',               sitemanager.createRoom);
+  router.post('/r/create',              sitemanager.onCreate);
+  router.get('/r/:rid/:rname',          sitemanager.getRoom);
 
 
   // account authentication

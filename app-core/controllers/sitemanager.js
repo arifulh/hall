@@ -13,12 +13,15 @@ exports.createRoom = function(req, res, next) {
 }
 
 exports.onCreate = function(req,res,next) {
+    if (!req.user) return res.redirect('/signin');
     roommanager.createRoom(req, res, function(err, results) {
-        res.redirect('/room/'+results.rid+'/'+results.rname);
+        res.redirect('/r/'+results.rid+'/'+results.rname);
     })
 }
 
 exports.getRoom = function(req, res, next) {
-      var data = { title: req.params.rname, user: req.user, rid: req.params.rid };
-      res.render('room', data);
+    roommanager.getRoom(req, res, function(err, results) {
+      if (results.rid) return res.render('room', { title: results.rname, user: req.user, rid: results.rid });
+      return res.render('room', { title: 'Room does not exist', user: req.user, rid: null })
+    });
 }
