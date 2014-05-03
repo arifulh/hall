@@ -1,4 +1,40 @@
+var request = require('request');
 var db = require('../database');
+
+function getGdata(ytid, cb) {
+    if (!ytid) return false;
+    var url = 'http://gdata.youtube.com/feeds/api/videos/' + ytid + '?v=2&alt=jsonc';
+    request(url, function(req, res) {
+
+         // if code == 200 then
+         //      -- If successful response, decode JSON
+         //      local decoded    = json.decode(data);
+         //      local entry      = decoded["entry"];
+         //      local permission = entry["yt$accessControl"][5]["permission"];
+
+         //      -- If the song is not embeddable, do nothing (return false).
+         //      if permission ~= "allowed" then return false end;
+
+         //      -- If the song is valid, create a song object to be added.
+         //      -- Also create a stanza for this new song to be sent to the room.
+         //      local new_song   = create_song(entry);
+         //      local playlist   = get_playlist(room);
+         //      stanza:get_child("song", song_queue_xmlns)
+         //        :tag("uuid"):text(new_song.uuid):up()
+         //        :tag("slen"):text(new_song.slen):up()
+         //        :tag("thumb"):text(new_song.thumb):up()
+         //        :tag("title"):text(new_song.title):up()
+
+         //      -- Insert our new song to the playlist. Broadcast this song
+         //      -- to the room so that clients can "queue" the song on their
+         //      -- end. Finally, "start" the playlist if it was empty before.
+         //      t_insert(playlist, new_song);
+         //      room:handle_to_room(origin, stanza);
+         //      if (#playlist == 1) then play_song(playlist, room) end;
+
+        cb(res.body);
+    })
+}
 
 exports.save = function(params, cb) {
     var multi = db.getMulti();
