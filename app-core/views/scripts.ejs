@@ -1,13 +1,18 @@
 <script src="/primus/primus.js"></script>
-<script src="/javascripts/vendor/jquery-1.11.0.min.js"></script>
-<script src="/javascripts/vendor/bootstrap.js"></script>
-<script src="/javascripts/app/transitions.js"></script>
-<script src="/javascripts/app/primus_client.js"></script>
-<script src="/javascripts/app/app.js"></script>
+<script src="/javascripts/vendor/async/lib/async.js"></script>
+<script src="/javascripts/vendor/jquery/dist/jquery.min.js"></script>
+<script src="/javascripts/vendor/lodash/dist/lodash.min.js"></script>
+<script src="/javascripts/vendor/vue/dist/vue.js">
+<script src="/javascripts/vendor/handlebars/handlebars.min.js"></script>
+<script src="/javascripts/vendor/fastdom/index.js"></script>
+<script src="/javascripts/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="/javascripts/vendor/buttons.js"></script>
 <script src="//balupton.github.io/jquery-scrollto/lib/jquery-scrollto.js"></script>
 <script src="//browserstate.github.io/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
 
+<script src="/javascripts/app/socketclient.js"></script>
+<script src="/javascripts/app/debug.js"></script>
+<script src="/javascripts/app/app.js"></script>
 <script>
 
 // Ajaxify
@@ -203,12 +208,6 @@
                 }
             }); // end ajax
                     });
-
-
-
-
-
-
 
 
         }); // end onStateChange

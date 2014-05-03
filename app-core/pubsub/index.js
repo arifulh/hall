@@ -1,11 +1,13 @@
-var db = require('../database');
-var User = require('../models').User;
-var primusExpressSession = require('primus-express-session');
 var redis   = require('redis');
 var pubsub  = require('node-internal-pubsub');
+var primusExpressSession = require('primus-express-session');
 var redisClient = redis.createClient();
 var redisSub = redis.createClient();
 var pub = pubsub.createPublisher();
+
+
+var db = require('../database');
+var User = require('../models').User;
 
 module.exports = function(primus) {
 
@@ -39,6 +41,9 @@ module.exports = function(primus) {
         redisClient.publish('chatmessages', JSON.stringify(message));
       });
     });
+
+
+
 
 
 

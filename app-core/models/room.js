@@ -7,7 +7,6 @@ exports.save = function(params, cb) {
         multi
             .sadd('usubs:'+params.owneruid, rid)
             .sadd('rusers:'+rid, params.owneruid)
-            .sadd('rinvites:'+rid, null)
             .hset('rname:rid', params.rname, rid)
             .hmset('room:'+rid, params, function(err,res) { console.log(res) })
             .exec(function(err, replies) { cb(err, params); })
@@ -52,7 +51,7 @@ exports.removeUser = function(params, cb) {
 }
 
 exports.addInvitation = function(params, cb) {
-    db.remSetMember('rinvites:'+params.rid, params.rusers, function(err, res) {
+    db.addSetMember('rinvites:'+params.rid, params.rusers, function(err, res) {
         cb(err, res);
     });
 }
@@ -62,5 +61,37 @@ exports.removeInvitation = function(params, cb) {
         cb(err, res);
     });
 }
+
+exports.addTracks = function(params, cb) {
+    db.prependListMembers('rtracks:'+params.rid, params.rtracks, function(err, res) {
+        cb(err, res);
+    });
+}
+
+exports.removeTrack = function(params, cb) {
+    var track = params.rtracks ? params.rtracks[0] : null;
+    if (!track) cb(null, { msg: 'no track provided' });
+    db.remListMember('rtracksrem:'+params.rid, 0, track, function(err, res) {
+        cb(err, res);
+    });
+}
+
+exports.gotoNextTrack = function(params, cb) {
+    var source = 'rtracks:'+params.rid, destination = source;
+    db.cycleListMembers(source, destination, function(err, res) {
+        cb(err, res);
+    });
+}
+
+exports.getTracks = function(params, cb) {
+    var tstart = 0, tend = 25;
+    db.getListMemberRange('rtracks:'+params.rid, tstart, tend, function(err, res) {
+        cb(err, res);
+    });
+}
+
+
+
+
 
 

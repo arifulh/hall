@@ -2,6 +2,7 @@
   -webkit-border-radius: 0 !important;
      -moz-border-radius: 0 !important;
           border-radius: 0 !important;
+
 }
 body {
     background: url(/images/bg2.png) -280px -400px no-repeat !important;
@@ -34,7 +35,9 @@ body .page-container.horizontal-menu header.navbar.navbar-fixed-top {
 
 .main-content {
     padding: 0 15px !important;
-    margin: 0 !important
+    margin: 0 !important;
+    transition: opacity 0.25s ease-in-out;
+
 }
 
 body .page-container.horizontal-menu header.navbar.navbar-fixed-top li {
@@ -177,7 +180,7 @@ body .page-container.horizontal-menu header.navbar.navbar-fixed-top a span {
     z-index: 999;
     position: relative;
     background: #fff;
-}
+}/*
 .t1.t1-trans {
     -webkit-transform: translate(0,-42px) !important;
     opacity: 0 !important
@@ -205,4 +208,4 @@ body .page-container.horizontal-menu header.navbar.navbar-fixed-top a span {
 }
 .t4 {
     transition: -webkit-transform 0.6s ease;
-}
+}*/
