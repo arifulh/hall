@@ -1,26 +1,17 @@
-<div class="navbar-inner ">
-    <ul class="pull-left navbar-nav ">
-        <li class=""  >
-            <a class="logo  button button-flat" href="/"><span class="bar1 "></span><h3 class="">trackfu</h3></a>
-        </li>
-        <% if (user) { %>
-        <li class="user-dropdown"><span class="button-dropdown" data-buttons="dropdown">
-            <a href="" class="no-ajaxy button button-flat">Logged in as <strong><%= user.uname %></strong> <i class="fa fa-caret-down"></i></a>
-            <ul>
-                <li class="">
-                    <a href="/profile">Profile</a>
-                </li>
-                <li class="button-dropdown-divider">
-                    <a class="no-ajaxy" href="/signout">Sign out</a>
-                </li>
-            </ul>
-        </span></li>
-        <% } %>
-    </ul>
-    <ul class="pull-left navbar-nav nav nav-pills ">
-        <li class=""><a href="/" class="">Popular</a></li>
-        <% if (user) { %> <li class=""><a href="/profile" class="">Favorites</a></li> <% } %>
-        <% if (user) { %> <li class=""><a href="/r/create" class="">Create</a></li> <% } %>
-        <% if (!user) { %> <li><a class="" href="/signup" role="">Register</a></li><li><a class="" href="/signin" role="">Login</a></li>  <% } %>
-    </ul>
-</div>
+    <div id="top-header" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/" id="brand-logo">track<span>fu</span></a>
+            </div>
+            <div class="collapse navbar-collapse header-collapse">
+                    <a role="button" class="btn btn-sm btn-primary" href="/"><span class="glyphicon glyphicon-home"></span></a>
+                <% if (user) { %>
+                    <a role="button" class="btn btn-sm btn-primary" href="/profile"><span class="glyphicon glyphicon-user"></span></a>
+                    <a role="button" class="btn btn-sm btn-primary" href="/r/create"><span class="glyphicon glyphicon-plus"></span></a>
+                    <a role="button" class="btn btn-sm btn-primary  no-ajaxy" href="/signout"><span class="glyphicon glyphicon-log-out"></span></a>
+                <% } else { %>
+                    <a role="button" class="btn btn-sm btn-primary" href="/signin"><span class="glyphicon glyphicon-log-in"></span></a>
+                <% } %>
+            </div>
+        </div>
+    </div>
